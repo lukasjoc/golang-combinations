@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestStringCombinations(t *testing.T) {
+func TestStringCombinationsForStringArrays(t *testing.T) {
 	tt := []struct {
 		name string
 		in   []string
@@ -70,7 +70,7 @@ func TestStringCombinations(t *testing.T) {
 	}
 	for _, tc := range tt {
 		t.Run(tc.name, func(t *testing.T) {
-			out := All(tc.in)
+			out := All[string](tc.in)
 			if !reflect.DeepEqual(out, tc.out) {
 				t.Errorf("error: \nreturn:\t%v\nwant:\t%v", out, tc.out)
 			}
@@ -85,7 +85,7 @@ func ExampleAll() {
 	// [[A] [B] [A B] [C] [A C] [B C] [A B C]]
 }
 
-func TestStringCombinationsN(t *testing.T) {
+func TestStringCombinationsNForStringArrays(t *testing.T) {
 	tt := []struct {
 		name string
 		in   []string
@@ -185,7 +185,7 @@ func TestStringCombinationsN(t *testing.T) {
 	}
 	for _, tc := range tt {
 		t.Run(tc.name, func(t *testing.T) {
-			out := Combinations(tc.in, tc.n)
+			out := Combinations[string](tc.in, tc.n)
 			if !reflect.DeepEqual(out, tc.out) {
 				t.Errorf("error: \nreturn:\t%v\nwant:\t%v", out, tc.out)
 			}

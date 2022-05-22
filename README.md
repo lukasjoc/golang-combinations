@@ -29,11 +29,17 @@ In general when you have e.g. `[]string{"A", "B", "C"}` you will get:
 
 ## Background
 
-The algorithm iterates over each number from `1` to `2^length(input)`, separating it by binary components and utilizes the true/false interpretation of binary 1's and 0's to extract all unique ordered combinations of the input slice.
+The algorithm iterates over each number from `1` to `2^length(input)`, separating it by
+binary components and utilizes the true/false interpretation of binary 1's and 0's to
+extract all unique ordered combinations of the input slice.
 
-E.g. a binary number `0011` means selecting the first and second index from the slice and ignoring the third and fourth. For input `{"A", "B", "C", "D"}` this signifies the combination `{"A", "B"}`.
+E.g. a binary number `0011` means selecting the first and second index from the slice and
+ignoring the third and fourth. For input `{"A", "B", "C", "D"}` this signifies the
+combination `{"A", "B"}`.
 
-For input slice `{"A", "B", "C", "D"}` there are `2^4 - 1 = 15` binary combinations, so mapping each bit position to a slice index and selecting the entry for binary `1` and discarding for binary `0` gives the full subset as:
+For input slice `{"A", "B", "C", "D"}` there are `2^4 - 1 = 15` binary combinations, so
+mapping each bit position to a slice index and selecting the entry for binary `1` and
+discarding for binary `0` gives the full subset as:
 
 ```txt
 1	=	0001	=>	---A	=>	{"A"}

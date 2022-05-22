@@ -1,17 +1,17 @@
-// Package combinations provides a method to generate all combinations out of a given string array.
+// Package combinations provides a method to generate all combinations out of a given T array.
 package combinations
 
 import "math/bits"
 
-// All returns all combinations for a given string array.
+// All returns all combinations for a given T array.
 // This is essentially a powerset of the given set except that the empty set is disregarded.
-func All(set []string) (subsets [][]string) {
+func All[T any](set []T) (subsets [][]T) {
 	length := uint(len(set))
 
 	// Go through all possible combinations of objects
 	// from 1 (only first object in subset) to 2^length (all objects in subset)
 	for subsetBits := 1; subsetBits < (1 << length); subsetBits++ {
-		var subset []string
+		var subset []T
 
 		for object := uint(0); object < length; object++ {
 			// checks if object is contained in subset
@@ -27,9 +27,9 @@ func All(set []string) (subsets [][]string) {
 	return subsets
 }
 
-// Combinations returns combinations of n elements for a given string array.
+// Combinations returns combinations of n elements for a given T array.
 // For n < 1, it equals to All and returns all combinations.
-func Combinations(set []string, n int) (subsets [][]string) {
+func Combinations[T any](set []T, n int) (subsets [][]T) {
 	length := uint(len(set))
 
 	if n > len(set) {
@@ -43,7 +43,7 @@ func Combinations(set []string, n int) (subsets [][]string) {
 			continue
 		}
 
-		var subset []string
+		var subset []T
 
 		for object := uint(0); object < length; object++ {
 			// checks if object is contained in subset
